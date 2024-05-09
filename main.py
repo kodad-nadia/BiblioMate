@@ -1,29 +1,21 @@
-# Import du framework FastAPI
+# Importing the framework
 from fastapi import FastAPI
 
-# Import de la documentation
-from documentation import api_description, tags_metadata
 
-# Import des routeurs
-from routers import (
-    users_router,
-    books_router,
-    reviews_router,
-    recommendations_router
-)
+# Importing the routers
+import routers.router_tasks
+import routers.router_auth
 
-# Initialisation de l'API
+
+# Initializing the API
 app = FastAPI(
-    title="BiblioMate",
-    description=api_description,
-    openapi_tags=tags_metadata,
+    title="TacheSync",
     docs_url='/'
 )
 
-# Inclusion des routeurs
-app.include_router(users_router.router)
-app.include_router(books_router.router)
-app.include_router(reviews_router.router)
+# Including routers dedicated to managing tasks
+app.include_router(routers.router_tasks.router)
 app.include_router(routers.router_auth.router)
+
 
 

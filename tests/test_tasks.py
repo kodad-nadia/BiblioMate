@@ -46,4 +46,3 @@ async def delete_workspace(workspace_id: str):
             workspaces.remove(workspace)
             return
     raise HTTPException(status_code=404, detail="Workspace not found")
-
